@@ -5,7 +5,277 @@
   <title>Narcon Menu [ Opposer VR ]</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* (all your CSS stays exactly the same) */
+    :root {
+      --bg: #05060a;
+      --card: #0b0d14;
+      --accent: #00e5ff;
+      --accent-soft: rgba(0, 229, 255, 0.2);
+      --text-main: #f5f7ff;
+      --text-muted: #9aa0b5;
+      --red: #e53935;
+      --code-bg: #05060a;
+      --border-subtle: #1b1f2b;
+      --radius-lg: 18px;
+      --radius-md: 10px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #15192b 0, #05060a 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .page {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, #090b12, #05060a);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(0, 229, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(229, 57, 53, 0.12), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-soft);
+    }
+
+    h1 {
+      font-size: 26px;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(154, 160, 181, 0.4);
+      color: var(--text-muted);
+      background: rgba(11, 13, 20, 0.9);
+    }
+
+    .section-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    ul.feature-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    ul.feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 0;
+    }
+
+    ul.feature-list li::before {
+      content: "";
+      margin-top: 5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-soft);
+      flex-shrink: 0;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #00e5ff, #00bcd4);
+      color: #020308;
+      border-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(0, 229, 255, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: rgba(154, 160, 181, 0.5);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-icon {
+      font-size: 14px;
+    }
+
+    /* Right side: script preview */
+    .code-card {
+      background: radial-gradient(circle at top left, #15192b 0, #05060a 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .code-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #ff5f57;
+    }
+
+    .code-dot:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .code-dot:nth-child(3) {
+      background: #28c840;
+    }
+
+    pre {
+      margin: 0;
+      padding: 10px 0 0;
+      max-height: 520px;
+      overflow: auto;
+      background: transparent;
+      color: #e3e7ff;
+      font-size: 12px;
+      line-height: 1.45;
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
+        Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    code {
+      background: transparent;
+      white-space: pre;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      text-align: right;
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
@@ -40,13 +310,12 @@
         </ul>
 
         <div class="cta-row">
-          <!-- ⭐ UPDATED BUTTON -->
+          <!-- Buy Script → Discord -->
           <a href="https://discord.gg/YOURINVITECODE" class="btn btn-primary" target="_blank">
             <span class="btn-icon">📜</span>
             <span>Buy Script</span>
           </a>
-
-          <!-- Optional: Discord button also links to same server -->
+          <!-- Discord button also to Discord -->
           <a href="https://discord.gg/YOURINVITECODE" class="btn btn-ghost" target="_blank">
             <span class="btn-icon">⚙️</span>
             <span>Discord</span>
@@ -65,7 +334,6 @@
           <span class="code-dot"></span>
         </div>
       </div>
-
       <pre><code>🔒250 ROBUX FOR ACCESS🔒</code></pre>
 
       <p class="tagline" id="usage">
