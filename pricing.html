@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Narcon Menu – Pricing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #05060a;
+      --card: #0b0d14;
+      --accent: #00e5ff;
+      --accent-soft: rgba(0, 229, 255, 0.2);
+      --text-main: #f5f7ff;
+      --text-muted: #9aa0b5;
+      --border-subtle: #1b1f2b;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #15192b 0, #05060a 55%);
+      font-family: system-ui, sans-serif;
+      color: var(--text-main);
+      padding: 40px 16px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+
+    .pricing-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #090b12, #05060a);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      font-size: 26px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    ul.features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    ul.features li {
+      padding: 6px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+    }
+
+    ul.features li::before {
+      content: "✔";
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #020308;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Narcon Menu – Pricing</h1>
+  <p class="subtitle">Choose the tier that fits your power level.</p>
+
+  <div class="pricing-grid">
+
+    <!-- FREE TIER -->
+    <div class="card">
+      <h2>Free Tier</h2>
+      <div class="price">FREE</div>
+      <ul class="features">
+        <li>Super Gun Teleporter</li>
+        <li>Teleport All Guns</li>
+        <li>Powerups</li>
+      </ul>
+      <a href="#" class="btn">Get Free Version</a>
+    </div>
+
+    <!-- 400 ROBUX TIER -->
+    <div class="card">
+      <h2>Standard Tier</h2>
+      <div class="price">400 ROBUX</div>
+      <ul class="features">
+        <li>Everything in Free Tier</li>
+        <li>Aimbot</li>
+        <li>Fly</li>
+        <li>Kill All</li>
+      </ul>
+      <a href="#" class="btn">Buy 400R Tier</a>
+    </div>
+
+    <!-- 800 ROBUX TIER -->
+    <div class="card">
+      <h2>Ultimate Tier</h2>
+      <div class="price">800 ROBUX</div>
+      <ul class="features">
+        <li>Everything in Standard Tier</li>
+        <li>No Cooldown</li>
+        <li>No Recoil</li>
+        <li>Opposer Menu</li>
+        <li>Hackeroo Menu Addon</li>
+        <li>And More...</li>
+      </ul>
+      <a href="#" class="btn">Buy 800R Tier</a>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back">← Back to Main Page</a>
+
+</body>
+</html>
